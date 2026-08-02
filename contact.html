@@ -62,21 +62,18 @@
 
         <form class="contact-form reveal">
           <div class="input-group">
-            <input type="text" required />
-
-            <label> Name </label>
+            <input type="text" name="name" required />
+            <label>Name</label>
           </div>
 
           <div class="input-group">
-            <input type="email" required />
-
-            <label> Email </label>
+            <input type="email" name="email" required />
+            <label>Email</label>
           </div>
 
           <div class="input-group">
-            <textarea required></textarea>
-
-            <label> Message </label>
+            <textarea name="message" required></textarea>
+            <label>Message</label>
           </div>
 
           <button class="button" type="submit">
@@ -95,7 +92,7 @@
             <p>UX/UI Designer & Frontend Developer</p>
 
             <div class="footer-contact">
-              <a href="mailto:zolnajic.tamara@gmail.com">
+              <a href="mailto:zolnajic.tamara@gmail.com" target="_blank">
                 zolnajic.tamara@gmail.com
               </a>
 
@@ -125,6 +122,13 @@
       </footer>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+      emailjs.init({
+        publicKey: "8DhYdOYe9ay_CqXTH",
+      });
+    </script>
     <script src="js/script.js"></script>
   </body>
 </html>

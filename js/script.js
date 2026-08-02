@@ -299,66 +299,45 @@ if(transition){
 ========================================= */
 
 
-const contactForm =
-document.querySelector(".contact-form");
+const contactForm = document.querySelector(".contact-form");
+const formMessage = document.querySelector(".form-message");
 
+if (contactForm) {
 
-const formMessage =
-document.querySelector(".form-message");
+    contactForm.addEventListener("submit", function (e) {
 
+        e.preventDefault();
 
+        emailjs.sendForm(
+            "service_dnspdaf",
+            "template_6tl76yn",
+            this
+        )
+        .then(() => {
 
-if(contactForm){
-
-
-    contactForm.addEventListener(
-        "submit",
-        (e)=>{
-
-
-            e.preventDefault();
-
-
-
-            if(formMessage){
-
-                formMessage.style.display =
-                "block";
-
-            }
-
-
+            formMessage.textContent = "Thanks! I'll reply soon.";
+            formMessage.style.display = "block";
 
             contactForm.reset();
 
+            setTimeout(() => {
+                formMessage.style.display = "none";
+            }, 4000);
 
+        })
+        .catch((error) => {
 
+            console.error(error);
 
-            setTimeout(()=>{
+            formMessage.textContent =
+                "Something went wrong. Please try again.";
 
+            formMessage.style.display = "block";
+        });
 
-                if(formMessage){
-
-                    formMessage.style.display =
-                    "none";
-
-                }
-
-
-            },4000);
-
-
-
-        }
-    );
-
+    });
 
 }
-
-
-
-
-
 
 
 
